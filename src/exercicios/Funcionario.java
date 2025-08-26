@@ -54,19 +54,10 @@ public class Funcionario {
     }
 
     public void calcularSalario () {
-        if (this.turno.equals("noite")) {
-            double calculo = this.salario * 1.2;
-
-            System.out.println("Funcionário: " + this.nome);
-            System.out.println("Mtrícula: " + this.matricula);
-            System.out.println("Turno: " + this.turno);
-            System.out.println("Salário: " + calculo);
-        }else {
-            System.out.println("Funcionário: " + this.nome);
-            System.out.println("Mtrícula: " + this.matricula);
-            System.out.println("Turno: " + this.turno);
-            System.out.println("Salário: " + this.salario);
+        if (this.turno.equalsIgnoreCase("noite")) {
+            this.salario = this.salario * 1.2;
         }
+        System.out.println(this.toString());
     }
 
     @Override

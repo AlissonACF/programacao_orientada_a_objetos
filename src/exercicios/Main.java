@@ -9,12 +9,14 @@ public class Main {
         Funcionario funcionario = new Funcionario();
         funcionario.pedirDados();
         funcionario.calcularSalario();
-        System.out.println(funcionario.toString());
 
         Maquina maquina = new Maquina();
         maquina.pedirDados();
         maquina.ligarDesligar();
         maquina.producaoDiaria();
-        System.out.println(maquina.toString());
+
+        Produto produto = new Produto();
+        produto.pedirDados();
+        produto.calcularPrecoVenda();
     }
 }

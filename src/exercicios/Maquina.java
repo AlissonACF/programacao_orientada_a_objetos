@@ -8,8 +8,10 @@ public class Maquina {
     private int numeroMaquina;
     private String marcaMaquina;
     private String dataFabricacao;
-    private double capacidadeMaximaHora;
+    private double capacidadeMaximaProducaoPorHora;
     private String statusMaquina;
+    private double horasTrabalhadas;
+    private double producaoDiaria;
 
     public int getNumeroMaquina() {
         return numeroMaquina;
@@ -44,11 +46,21 @@ public class Maquina {
     }
 
     public double getCapacidadeMaximaHora() {
-        return capacidadeMaximaHora;
+        return capacidadeMaximaProducaoPorHora;
     }
 
     public void setCapacidadeMaximaHora(double capacidadeMaximaHora) {
-        this.capacidadeMaximaHora = capacidadeMaximaHora;
+        this.capacidadeMaximaProducaoPorHora = capacidadeMaximaHora;
+    }
+
+    public Maquina() {
+    }
+    public Maquina(int numeroMaquina, String marcaMaquina, String dataFabricacao, double capacidadeMaximaProducaoPorHora, String statusMaquina) {
+        this.numeroMaquina = numeroMaquina;
+        this.marcaMaquina = marcaMaquina;
+        this.dataFabricacao = dataFabricacao;
+        this.capacidadeMaximaProducaoPorHora = capacidadeMaximaProducaoPorHora;
+        this.statusMaquina = statusMaquina;
     }
 
     public void pedirDados () {
@@ -59,16 +71,18 @@ public class Maquina {
         System.out.println("Digite a data de fabricação da máquina:");
         this.dataFabricacao = scanner.next();
         System.out.println("Digite a capacidade máxima de produção por hora da máquina:");
-        this.capacidadeMaximaHora = scanner.nextDouble();
+        this.capacidadeMaximaProducaoPorHora = scanner.nextDouble();
+        System.out.println("Digite a quantia de horas trabalhadas da máquina:");
+        horasTrabalhadas = scanner.nextDouble();
         System.out.println("ligar ou desligar a máquina?");
         this.statusMaquina = scanner.next();
     }
 
     public void ligarDesligar () {
-        if (this.statusMaquina.equals("ligar")) {
+        if (this.statusMaquina.equalsIgnoreCase("ligar")) {
             System.out.println("A máquina está ligada.");
         } else if (this.statusMaquina.equals("desligar")) {
-            System.out.println("A você desligou a máquina.");
+            System.out.println("Você desligou a máquina.");
         }else {
             System.out.println("Este comando não é válido.");
         }
@@ -76,13 +90,8 @@ public class Maquina {
 
 
     public void producaoDiaria () {
-        double calculoProducao = this.capacidadeMaximaHora * 24;
-
-        System.out.println("Número da máquina: " + this.numeroMaquina);
-        System.out.println("Marca da máquina: " + this.marcaMaquina);
-        System.out.println("Data de fabricação: " + this.dataFabricacao);
-        System.out.println("Capacidade máxima por hora: " + this.capacidadeMaximaHora);
-        System.out.println("Capacidade de produção diária: " + calculoProducao);
+        this.producaoDiaria = this.capacidadeMaximaProducaoPorHora * this.horasTrabalhadas;
+        System.out.println(this.toString());
     }
 
     @Override
@@ -91,7 +100,7 @@ public class Maquina {
                 "numeroMaquina=" + numeroMaquina +
                 ", marcaMaquina='" + marcaMaquina + '\'' +
                 ", dataFabricacao='" + dataFabricacao + '\'' +
-                ", capacidadeMaximaHora=" + capacidadeMaximaHora +
+                ", producaoDiaria=" + producaoDiaria +
                 ", statusMaquina='" + statusMaquina + '\'' +
                 '}';
     }
