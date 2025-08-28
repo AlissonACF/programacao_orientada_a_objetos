@@ -18,5 +18,11 @@ public class Main {
         Produto produto = new Produto();
         produto.pedirDados();
         produto.calcularPrecoVenda();
+
+        MateriaPrima materiaPrima = new MateriaPrima();
+        materiaPrima.adicionarAoEstoque();
+        materiaPrima.retirarDoEstoque();
+        materiaPrima.verificarSePrecisaRepor();
+        System.out.println(materiaPrima.toString());
     }
 }
